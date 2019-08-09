@@ -15,6 +15,8 @@ Transform Bitcoin Transactions into Virtual Procedure Call Units.
 
 # Schema
 
+BPU is a fork of [TXO](https://github.com/interplanaria/txo), but with a little different structure, and with customization features.
+
 At a high level, BPU is a library that creates a nested structure of **tapes** and **cells** from a Bitcoin transaction with the following rule:
 
 1. `i`: positional index for whichever item it's attached to. applies to both `tape` and `cell`.
