@@ -1,6 +1,6 @@
 {
   "name": "bpu",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Bitcoin Processing Unit",
   "main": "index.js",
   "author": "",
