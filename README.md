@@ -15,9 +15,16 @@ Transform Bitcoin Transactions into Virtual Procedure Call Units.
 
 # Schema
 
-At a high level, BPU is a library that creates a nested structure of **tapes** and **cells** from a Bitcoin transaction.
+At a high level, BPU is a library that creates a nested structure of **tapes** and **cells** from a Bitcoin transaction with the following rule:
 
-At an implementation level, it lets you generate your own custom serialization format. One example is **BOB (Bitcoin OP_RETURN Bytecode)**. 
+1. `i`: positional index for whichever item it's attached to. applies to both `tape` and `cell`.
+2. `ii`: global positional index. only applies to `cell`. For example, a cell can have a local index `i` of 0, but global index `ii` of 3.
+3. `b`: base64 representation of a push data.
+4. `s`: UTF8 representation of a push data.
+5. `op`: a Bitcoin opcode number. only applies to push data items which are opcodes. (not buffer type push data)
+6. `ops`: a Bitcoin opcode string. only applies to push data items which are opcodes. (not buffer type push data)
+
+BPU also lets you generate your own custom serialization format. One example is **BOB (Bitcoin OP_RETURN Bytecode)**. 
 
 > You can learn more about BOB here: https://medium.com/@_unwriter/hello-bob-94701d278afb
 >
