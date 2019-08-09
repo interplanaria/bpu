@@ -547,6 +547,21 @@ const BPU = require('bpu');
 })();
 ```
 
+Split with OP_CODESEPARATOR (`{ops: "OP_CODESEPARATOR"}`)
+
+```
+const BPU = require('bpu');
+// 'txid' is a transaction id
+(async function() {
+  let result = await BPU.parse({
+    tx: { h: txid },
+    split: [{
+      token: { ops: "OP_CODESEPARATOR" }
+    }]
+  })
+})();
+```
+
 ### e. Split and Discard
 
 By default, "split" discards the delimiter from the result.
