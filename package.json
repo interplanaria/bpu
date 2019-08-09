@@ -1,0 +1,19 @@
+{
+  "name": "bpu",
+  "version": "0.0.4",
+  "description": "Bitcoin Processing Unit",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha"
+  },
+  "dependencies": {
+    "bitcoind-rpc": "^0.8.1",
+    "bsv": "^0.29.2",
+    "dotenv": "^8.0.0"
+  },
+  "devDependencies": {
+    "mocha": "^6.2.0"
+  }
+}
