@@ -633,6 +633,25 @@ const BPU = require('bpu');
 })();
 ```
 
+### i. Split with multiple tokens
+
+You can split based on multiple delimiters. For example [BOB](https://bob.planaria.network) chunks scripts based on `OP_RETURN` and `|`.
+
+````
+const BPU = require('bpu');
+(async function() {
+  let result = await BPU.parse({
+    tx: { r: raw },
+    split: [{
+      token: { s: "|" }
+    }, {
+      token: { ops: "OP_RETURN" },
+      include: "l"
+    }]
+  })
+})();
+````
+
 ## 4. transform
 
 Transform each input/output script object:
