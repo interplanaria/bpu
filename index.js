@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 require('dotenv').config()
 const bsv = require('bsv')
 const RpcClient = require('bitcoind-rpc');
@@ -27,12 +26,11 @@ const fromHash = function(o, config) {
 }
 const fromTx = function(o) {
   let transaction = o.tx.r;
-  console.log(transaction)
   return new Promise(function(resolve, reject) {
     let gene = new bsv.Transaction(transaction);
     let inputs = gene.inputs ? collect(o, "in", gene.inputs) : []
     let outputs = gene.outputs ? collect(o, "out", gene.outputs) : []
-    resolve({ tx: { h: gene.hash }, in: inputs, out: outputs })
+    resolve({ tx: { h: gene.hash }, in: inputs, out: outputs, lock: gene.nLockTime })
   })
 }
 const collect = function(o, type, xputs) {
@@ -140,6 +138,7 @@ const collect = function(o, type, xputs) {
         let address = xput.script.toAddress(bsv.Networks.livenet).toString()
         if (address && address.length > 0) { sender.a = address; }
         xputres.e = sender;
+        xputres.seq = xput.sequenceNumber;
       } else if (type === 'out') {
         let receiver = { v: xput.satoshis, i: xput_index }
         let address = xput.script.toAddress(bsv.Networks.livenet).toString()
